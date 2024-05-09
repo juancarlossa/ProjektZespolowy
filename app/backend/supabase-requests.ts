@@ -1,10 +1,9 @@
 import { type Session, createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-//import { useRouter } from 'next/navigation'
   
   const supabase = createClientComponentClient()
-  //const router = useRouter()  
-  
-  export const githubLogin = async () => {
+
+  //OAuth Google i Github
+  export const handleSignInGithub = async () => {
     await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: {
@@ -12,3 +11,14 @@ import { type Session, createClientComponentClient } from '@supabase/auth-helper
       }
     })
   }
+
+  export const handleSignInGoogle = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: 'http://localhost:3000/auth/callback'
+      }
+    })
+  }
+
+  
