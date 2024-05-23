@@ -1,12 +1,17 @@
-'use client'
 import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/navbar";
-import { Link } from "@nextui-org/link";
+import Link from "next/link";
 import { Button } from "@nextui-org/button";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/dropdown";
 import { ChevronDown } from "./lib/icons";
+import { AuthButtonServer } from "@/app/(login)/login/components/AuthButtonServer";
+import { Avatar } from "@nextui-org/react";
 
-export default function App ({ categories }: any) {
+type NavProps = {
+  userImg: string
+}
+
+export default function Nav ({ userImg }: NavProps) {
 
   const icons = {
     chevron: <ChevronDown fill="currentColor" size={16} />
@@ -51,40 +56,33 @@ export default function App ({ categories }: any) {
               </Button>
             </DropdownTrigger>
             <DropdownMenu aria-label="Categories">
-              {categories.map((category: any) => {
-                return (
-                  <DropdownItem key={category.id} href={`/categories/${category.name}`}>{category.name}</DropdownItem>
-                )
-              })}
+              <></>
             </DropdownMenu>
           </Dropdown>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/gamegenres">
-            Game Genres
+          <Link color="foreground" href="/profile">
+            Profile
           </Link>
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent justify="end">
+      <NavbarContent justify="end" >
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Out
-          </Button>
+          <Link href="/profile" className="flex flex-col items-end">
+            <Avatar
+              isBordered
+              src={userImg}
+              alt={`${userImg} profile picture`}
+              className='rounded-full'
+              size='md'
+            />
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <AuthButtonServer />
         </NavbarItem>
       </NavbarContent>
-      :
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="/login">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="/register" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
-
     </Navbar>
   );
 }

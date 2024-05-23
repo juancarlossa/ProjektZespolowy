@@ -8,6 +8,10 @@ import { usePathname, useRouter } from 'next/navigation'
 import { FC, useEffect, useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast'
 import UnseenChatToast from './UnseenChatToast'
+import { AddFriendForm } from './AddFriendForm'
+import Link from 'next/link'
+import { UserAvatar } from './Avatar'
+import { Button } from '@nextui-org/react'
 
 interface SidebarChatListProps {
   friends: User[]
@@ -75,32 +79,36 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
   }, [pathname])
 
   return (
-    <ul role='list' className='max-h-[25rem] overflow-y-auto space-y-1'>
-      <Toaster />
-      {activeChats.sort().map((friend) => {
-        const unseenMessagesCount = unseenMessages.filter((unseenMsg) => {
-          return unseenMsg.id_user === friend.uuid
-        }).length
+    <ul role='list' className='flex flex-col justify-between max-h-[25rem] overflow-y-auto space-y-1'>
+      <div>
+        <AddFriendForm />
+        <Toaster />
+        {activeChats.sort().map((friend) => {
+          const unseenMessagesCount = unseenMessages.filter((unseenMsg) => {
+            return unseenMsg.id_user === friend.uuid
+          }).length
 
-        return (
-          <li key={friend.id} className='pt-3'>
-            <a
-              href={
-                `/chat/${chatHrefConstructor(
-                  sessionId,
-                  friend.uuid
-                )}`}
-              className='hover:text-gray-700 text-indigo-600 bg-gray-50 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'>
-              {friend.email}
-              {unseenMessagesCount > 0 ? (
-                <div className='bg-indigo-600 font-medium text-xs text-white w-4 h-4 rounded-full flex justify-center items-center'>
-                  {unseenMessagesCount}
-                </div>
-              ) : null}
-            </a>
-          </li>
-        )
-      })}
+          return (
+            <li key={friend.id} className='pt-3'>
+              <Link
+                href={
+                  `/chat/${chatHrefConstructor(
+                    sessionId,
+                    friend.uuid
+                  )}`}
+                className='justify-between hover:text-gray-700 text-indigo-600 bg-gray-50 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'>
+                {friend.email.split('@')[0]}
+                {unseenMessagesCount > 0 ? (
+                  <div className='bg-indigo-600 font-medium text-xs text-white w-4 h-4 rounded-full flex justify-center items-center'>
+                    {unseenMessagesCount}
+                  </div>
+                ) : null}
+                <UserAvatar userImg={friend.img} />
+              </Link>
+            </li>
+          )
+        })}
+      </div>
     </ul>
   )
 }

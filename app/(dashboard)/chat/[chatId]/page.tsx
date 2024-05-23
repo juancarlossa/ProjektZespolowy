@@ -15,8 +15,8 @@ interface PageProps {
 }
 
 const page = async ({ params }: PageProps) => {
-  const supabase = createServerComponentClient({ cookies })
   const { chatId } = params
+  const supabase = createServerComponentClient({ cookies })
   const { data: { user } } = await supabase.auth.getUser()
   if (user === null) return
 
@@ -49,7 +49,7 @@ const page = async ({ params }: PageProps) => {
 
 
   return (
-    <section className='h-screen max-h-screen flex flex-col'>
+    <section className='h-screen flex flex-col justify-between'>
       <div className='flex flex-row justify-start items-center space-x-4 my-5'>
         <Avatar
           isBordered

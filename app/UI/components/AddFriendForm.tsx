@@ -13,20 +13,20 @@ export function AddFriendForm () {
         await addFriend(formData)
         formRef.current?.reset()
       }}
-      className="w-full flex flex-row flex-wrap gap-4"
+      className="w-full flex flex-row gap-3 items-center py-5"
     >
       <Input
         name="email"
         type="email"
-        color="primary"
+        color="secondary"
         label="Add a friend"
-        placeholder="Enter your email"
+        placeholder="Enter an email"
         className="max-w-[220px]"
         defaultValue=""
       />
       <Button
         type="submit"
-        color="primary">test</Button>
+        color="secondary">Add a friend</Button>
     </form>
   );
 }

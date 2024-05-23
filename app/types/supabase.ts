@@ -77,7 +77,7 @@ export type Database = {
           email: string
           email_friends_list: string[] | null
           id: number
-          img: string | null
+          img: string
           uuid: string
         }
         Insert: {
