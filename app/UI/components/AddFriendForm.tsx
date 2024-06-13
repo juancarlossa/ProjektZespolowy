@@ -20,13 +20,13 @@ export function AddFriendForm () {
         type="email"
         color="secondary"
         label="Add a friend"
-        placeholder="Enter an email"
+        placeholder="Enter your friend email"
         className="max-w-[220px]"
         defaultValue=""
       />
       <Button
         type="submit"
-        color="secondary">Add a friend</Button>
+        color="primary">add your friend</Button>
     </form>
   );
 }

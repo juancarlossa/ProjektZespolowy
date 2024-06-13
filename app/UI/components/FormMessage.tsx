@@ -22,7 +22,7 @@ export function FormMessage () {
       />
       <Button
         type="submit"
-        color="primary">test</Button>
+        color="primary">send a message    </Button>
     </form>
   );
 }
