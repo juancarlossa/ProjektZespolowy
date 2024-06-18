@@ -1,9 +1,17 @@
-import { AuthButton } from './components/AuthButton'
+
+import { AuthButton } from './ClientButton'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import { AuthButtonServer } from './components/AuthButtonServer'
 
 export default function Login () {
+  async function AuthButtonServer () {
+    const supabase = createServerComponentClient({ cookies })
+    supabase.auth.getUser()
+    const { data: { session } } = await supabase.auth.getSession()
+
+    return <AuthButton session={session} />
+  }
+
   return (
     <section className="grid place-content-center min-h-screen">
       <div className='bg-gray-200 p-8 rounded-lg justify-center items-center'>
