@@ -26,8 +26,10 @@ export default async function Home () {
   return (
     <>
       <Nav userImg={user.user_metadata.avatar_url} />
-      <div className="flex w-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-100">
+      <div className="flex w-full h-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-100">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
+          <h1>Welcome to Chatily!</h1>
+          <p>Start chatting with your friends now</p>
           <AddFriendForm />
         </div>
       </div>
