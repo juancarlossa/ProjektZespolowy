@@ -26,7 +26,7 @@ export default async function Home () {
       <div className="flex w-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-100 to-purple-200">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h1 className="text-3xl font-bold text-center">Welcome to Chatily!</h1>
-          <p className="text-center mt-2">Start chatting with your friends now</p>
+          <p className="text-center mt-2">Start chatting with your friends now.</p>
           <AddFriendForm />
           <p className="text-center mt-2">Here you can add a friend by entering their email.</p>
         </div>
