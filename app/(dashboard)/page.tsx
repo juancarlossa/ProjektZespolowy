@@ -1,6 +1,4 @@
-
 import { AddFriendForm } from "@/app/UI/components/AddFriendForm";
-import { FormMessage } from "@/app/UI/components/FormMessage";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from 'next/headers'
 import { getFriendsByUserId } from "../_backend/helpers/get-friends-by-user-id";
@@ -21,16 +19,22 @@ export default async function Home () {
   if (friendList === undefined) return ''
 
   const friends: User[] = friendList
-  //const friendsList: string[] | undefined = await getEmailFriendsListByUserId(user.id);
 
   return (
     <>
       <Nav userImg={user.user_metadata.avatar_url} />
-      <div className="flex w-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-100">
+      <div className="flex w-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-100 to-purple-200">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
+          <h1 className="text-3xl font-bold text-center">Welcome to Chatily!</h1>
+          <p className="text-center mt-2">Start chatting with your friends now!</p>
           <AddFriendForm />
+          <p className="text-center mt-2">Here you can add a friend by entering their email.</p>
+        </div>
+        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+          <h2 className="text-2xl font-bold text-center">Your Friends</h2>
         </div>
       </div>
+      <Toaster />
     </>
   );
 }
