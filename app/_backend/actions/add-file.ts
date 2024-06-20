@@ -1,12 +1,24 @@
-/*'use server'
+'use server'
 
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { v4 as uuidv4 } from 'uuid'
 
 export const uploadFile = async (formData: FormData) => {
-  const file = formData.get('file') as File
-  if (!file) return
+  try {
+    const file = formData.get('file') as File
+    const chatId = formData.get('chatId') as string
+    if (!file) {
+      console.error('No file provided')
+      return
+    }
+    if (!chatId) {
+      console.error('No chat ID provided')
+      return
+    }
+
+  //const file = formData.get('file') as File
+  //if (!file) return
 
   const supabase = createServerActionClient({ cookies })
   const { data: { user } } = await supabase.auth.getUser()
@@ -33,4 +45,4 @@ export const uploadFile = async (formData: FormData) => {
   console.log('File uploaded:', fileUrl)
   return fileUrl
 }
-  */
+  
