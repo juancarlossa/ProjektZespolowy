@@ -5,6 +5,8 @@ import TextareaAutosize from 'react-textarea-autosize'
 import { User } from '@/app/types/user'
 import { Button, Input } from '@nextui-org/react'
 import { addMessage } from '@/app/_backend/actions/add-message'
+import { PictureIcon } from '../icons/icons'
+import { ImageUploader } from './ImageUploader'
 
 interface ChatInputProps {
   chatPartner: User
@@ -47,7 +49,8 @@ export const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
     >
       <div className='flex flex-row'>
         <InputUi />
-        <div className='flex-shrink-0 my-auto mx-3'>
+        <div className='flex-shrink-0 my-auto mx-3 space-x-4 flex flex-row'>
+          <ImageUploader />
           <Button
             isLoading={isLoading}
             type='submit'
