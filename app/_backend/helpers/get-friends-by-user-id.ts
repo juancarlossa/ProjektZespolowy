@@ -19,8 +19,6 @@ export const getFriendsByUserId = async (userId: string) => {
   if (friendsList === null) return
   if(friendsList === undefined) return  
 
-  console.log(`The friend list of ${user.email} is `)
-  console.log(friendsList)
   return friendsList
 }
 
@@ -38,7 +36,6 @@ export const getEmailFriendsListByUserId = async (userId: string) => {
   const emailFriendsList: string[] = [];
   friendsList?.map((friend) => ( friend.email_friends_list ? emailFriendsList.push(...friend.email_friends_list) : ''))
 
-  console.log(emailFriendsList)
   return emailFriendsList
 }
 

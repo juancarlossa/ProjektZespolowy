@@ -5,12 +5,9 @@ import { cookies } from 'next/headers'
 import { v4 as uuidv4 } from 'uuid'
 
 export const uploadFile = async (formData: FormData) => {
-<<<<<<< HEAD
   //const file = formData.get('file') as File
   //if (!file) return
 
-=======
->>>>>>> origin/backend
   try {
     const file = formData.get('file') as File
     const chatId = formData.get('chatId') as string
@@ -23,12 +20,6 @@ export const uploadFile = async (formData: FormData) => {
       return
     }
 
-<<<<<<< HEAD
-=======
-  //const file = formData.get('file') as File
-  //if (!file) return
-
->>>>>>> origin/backend
   const supabase = createServerActionClient({ cookies })
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return

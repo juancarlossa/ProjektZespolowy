@@ -2,15 +2,17 @@
   "name": "chatily",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "code . && start http://localhost:3000 && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
+    "@nextui-org/react": "^2.3.6",
     "@supabase/auth-helpers-nextjs": "^0.10.0",
-<<<<<<< HEAD
     "@supabase/ssr": "^0.3.0",
     "@supabase/supabase-js": "^2.43.2",
     "@tailwindcss/forms": "^0.5.7",
@@ -36,18 +38,6 @@
     "@types/express": "^4.17.21",
     "@types/formidable": "^3.4.5",
     "@types/morgan": "^1.9.9",
-=======
-    "@supabase/supabase-js": "^2.42.4",
-    "cors": "^2.8.5",
-    "next": "14.2.2",
-    "react": "^18",
-    "react-dom": "^18",
-    "socket.io": "^4.7.5",
-    "socket.io-client": "^4.7.5",
-    "ws": "^8.16.0"
-  },
-  "devDependencies": {
->>>>>>> origin/backend
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
