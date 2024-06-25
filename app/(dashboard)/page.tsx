@@ -23,17 +23,11 @@ export default async function Home () {
   return (
     <>
       <Nav userImg={user.user_metadata.avatar_url} />
-<<<<<<< HEAD
-      <div className="flex w-full h-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-100">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h1>Welcome to Chatily!</h1>
-          <p>Start chatting with your friends now</p>
-=======
-      <div className="flex w-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-100 to-purple-200">
+      <div className="flex w-full h-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-100 to-purple-200">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h1 className="text-3xl font-bold text-center">Welcome to Chatily!</h1>
           <p className="text-center mt-2">Start chatting with your friends now!</p>
->>>>>>> origin/commtestingandfront
+
           <AddFriendForm />
           <p className="text-center mt-2">Here you can add a friend by entering their email.</p>
         </div>
