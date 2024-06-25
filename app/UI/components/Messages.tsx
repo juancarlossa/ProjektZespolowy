@@ -7,6 +7,7 @@ import { FC, useEffect, useRef, useState } from 'react'
 import { XIcon } from '../icons/xIcon'
 import { deleteMessage } from '@/app/_backend/actions/delete-message'
 import { EditIcon } from '../icons/editIcon'
+import { editMessage } from '@/app/_backend/actions/edit-message'
 
 interface MessagesProps {
   initialMessages: Message[]

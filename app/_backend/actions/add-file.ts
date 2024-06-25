@@ -8,7 +8,6 @@ export const uploadFile = async (formData: FormData) => {
   //const file = formData.get('file') as File
   //if (!file) return
 
-  try {
     const file = formData.get('file') as File
     const chatId = formData.get('chatId') as string
     if (!file) {
