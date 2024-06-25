@@ -5,6 +5,7 @@ const FileUpload = ({ onFileUpload }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
+  // Obsługa zmiany pliku
   const handleFileChange = (event) => {
     setError(null)
     const selectedFile = event.target.files[0]
@@ -20,6 +21,7 @@ const FileUpload = ({ onFileUpload }) => {
     }
   }
 
+  // Obsługa przesłania formularza
   const handleSubmit = async (event) => {
     event.preventDefault()
     setError(null)
@@ -33,6 +35,10 @@ const FileUpload = ({ onFileUpload }) => {
     try {
       const formData = new FormData()
       formData.append('file', file)
+      // Dodanie 'chatId' do formData jeśli wymagane
+      // formData.append('chatId', 'some-chat-id')
+
+      // Wywołanie funkcji onFileUpload przekazanej jako props
       await onFileUpload(formData)
       setFile(null)
     } catch (uploadError) {
