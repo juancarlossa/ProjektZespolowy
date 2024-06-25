@@ -2,62 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-.scrollbar-w-2::-webkit-scrollbar {
-  width: 0.25rem;
-  height: 0.25rem;
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
-.scrollbar-track-blue-lighter::-webkit-scrollbar-track {
-  --bg-opacity: 1;
-  background-color: #2496e2;
-  background-color: rgba(247, 250, 252, var(--bg-opacity));
-}
-
-.scrollbar-thumb-blue::-webkit-scrollbar-thumb {
-  --bg-opacity: 1;
-  background-color: #0073e5;
-  background-color: rgba(237, 242, 247, var(--bg-opacity));
-}
-
-.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
-  border-radius: 0.25rem;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
 }
 
 body {
-  --black: #000000;
-  --ash-black: #222;
-  --white: #fafafa;
-  --sky: #00ccff;
-  --green: #22dddd;
-  --blue: #1300ff;
-  --dusk: #6600ff;
-  --purple: #9900ff;
-  --pink: #ff0066;
-  --red: #fe0222;
-  --orange: #fd7702;
-  --yellow: #ffbb00;
-
-  --background: var(--white);
-  --accent: var(--purple);
-
-  background: var(--background);
-  color: var(--foreground);
+  color: rgb(var(--foreground-rgb));
+  background-image: url('https://wallpapers.com/images/featured/nature-2ygv7ssy2k0lxlzu.jpg');
+  opacity: 0.9;
+    background-position: center;
+    background-size: cover;
 }
 
-::-webkit-scrollbar {
-  height: 3px;
-  width: 3px;
-  background: var(--background);
-  -webkit-border-radius: 1ex;
+body::before {
+  background: rgb(169, 116, 202);
+  content: "";
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  /* Asegura que el pseudo-elemento esté detrás de otros contenidos */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  -webkit-border-radius: 1ex;
-}
-
-::-webkit-scrollbar-corner {
-  background: #fff3;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }

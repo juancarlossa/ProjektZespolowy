@@ -53,19 +53,7 @@ export const ImageUploader: React.FC = () => {
               formData.append('image', new File([blob], file.name, { type: 'image/png' }))
 
               // Send the image to the server
-              fetch('/api/uploadImage', {
-                method: 'POST',
-                body: formData
-              })
-                .then(response => response.json())
-                .then(data => {
-                  if (data.publicUrl) {
-                    setImageUrl(data.publicUrl)
-                  }
-                })
-                .catch(error => {
-                  console.error('Error uploading image:', error)
-                })
+              handleSubmit
             })
         }
         img.src = reader.result as string
