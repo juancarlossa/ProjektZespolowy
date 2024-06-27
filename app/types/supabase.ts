@@ -78,6 +78,9 @@ export type Database = {
           email_friends_list: string[] | null
           id: number
           img: string
+          name: string | null
+          surname: string | null
+          telefon: string | null
           uuid: string
         }
         Insert: {
@@ -87,6 +90,9 @@ export type Database = {
           id?: number
           img?: string | null
           uuid: string
+          name: string | null
+          surname: string | null
+          telefon: string | null
         }
         Update: {
           created_at?: string
@@ -95,6 +101,9 @@ export type Database = {
           id?: number
           img?: string | null
           uuid?: string
+          name: string | null
+          surname: string | null
+          telefon: string | null
         }
         Relationships: [
           {
