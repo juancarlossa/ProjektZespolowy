@@ -4,6 +4,10 @@ import { formatTime, toPusherKey } from '@/app/_backend/helpers/utils'
 import { Message } from '@/app/types/messages'
 import { User } from '@/app/types/user'
 import { FC, useEffect, useRef, useState } from 'react'
+import { XIcon } from '../icons/xIcon'
+import { deleteMessage } from '@/app/_backend/actions/delete-message'
+import { EditIcon } from '../icons/editIcon'
+import { editMessage } from '@/app/_backend/actions/edit-message'
 
 interface MessagesProps {
   initialMessages: Message[]
@@ -65,13 +69,31 @@ export const Messages: FC<MessagesProps> = ({
             className='chat-message'
             key={`${message.id}-${message.created_at}`}>
             <div className={isCurrentUser ? 'flex items-end justify-end' : 'flex items-end'}>
+
+              <form
+                action={async () => {
+                  await deleteMessage(message.id)
+                }}
+                className=""
+              >
+                <XIcon />
+              </form>
+              <form
+                action={async () => {
+                  await editMessage(message.id)
+                }}
+                className=""
+              >
+                <EditIcon />
+              </form>
+
               <div
                 className={isCurrentUser ?
                   'flex flex-col space-y-2 text-base max-w-xs mx-2 order-1 items-end' :
                   'flex flex-col space-y-2 text-base max-w-xs mx-2 order-2 items-start'
                 }>
                 <span
-                  className={isCurrentUser ? 'px-4 py-2 rounded-lg inline-block bg-indigo-600 text-white' :
+                  className={isCurrentUser ? ' px-4 py-2 rounded-lg inline-block bg-indigo-600 text-white' :
                     !isCurrentUser ? 'px-4 py-2 rounded-lg inline-block bg-gray-200 text-gray-900' :
                       !hasNextMessageFromSameUser && isCurrentUser ? 'rounded-br-none px-4 py-2 rounded-lg inline-block bg-indigo-600 text-white' :
                         !hasNextMessageFromSameUser && !isCurrentUser ? 'rounded-bl-none px-4 py-2 rounded-lg inline-block bg-gray-200 text-gray-900' : ''}>

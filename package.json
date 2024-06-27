@@ -30,11 +30,8 @@
     "react-hook-form": "^7.51.3",
     "react-hot-toast": "^2.4.1",
     "react-textarea-autosize": "^8.5.3",
-<<<<<<< HEAD
     "uuid": "^10.0.0",
-=======
     "styled-components": "^6.1.11",
->>>>>>> origin/commtestingandfront
     "zod": "^3.23.5"
   },
   "devDependencies": {

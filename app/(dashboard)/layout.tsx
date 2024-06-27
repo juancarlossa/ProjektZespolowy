@@ -50,9 +50,22 @@ export default async function RootLayout ({
   const friends: User[] = friendList
   return (
     <section className="flex justify-stretch items-stretch">
-      <aside className="bg-black p-5 h-screen min-w-1/5 w-1/5 border-gray-700 border-1">
-        <div className="border-b-1 border-gray-700">
-          <h2 className="text-white font-bold text-2xl">{friends?.length} friends</h2>
+      <aside className="bg-cyan-50 p-5 h-screen min-w-1/5 w-1/5 border-cyan-200 border-1">
+        <div className="border-b-1 border-cyan-200 flex flex-row justify-between">
+          <div>
+            <h2 className="text-slate-600 font-bold text-2xl">
+              {
+                friends?.length == 0 ? <p>No friends :\</p> :
+                  friends.length == 1 ? <p>1 friend</p> :
+                    <p>{friends.length} friends</p>
+              }
+            </h2>
+          </div>
+          <Button color='default' href='/' size="sm" className="bg-cyan-100" >
+            <Link href='/'>
+              <Home />
+            </Link>
+          </Button>
         </div>
         <SidebarChatList sessionId={user.id} friends={friends} />
       </aside>
