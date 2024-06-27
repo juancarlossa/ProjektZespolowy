@@ -1,4 +1,4 @@
-'use server'
+/*'use server'
 
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
@@ -66,5 +66,5 @@ export const uploadFile = async (formData: FormData) => {
     console.error('Unexpected error:', error)
   }
 }
-
+*/
   
