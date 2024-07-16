@@ -24,11 +24,10 @@ export const uploadFile = async (formData: FormData) => {
 
     // Utworzenie klienta Supabase
     const supabase = createServerActionClient({ cookies })
-
+jjj
     // Pobranie danych użytkownika
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return
-
     // Generowanie unikalnej nazwy pliku
     const fileName = `${uuidv4()}-${file.name}`
 
