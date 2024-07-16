@@ -1,5 +1,5 @@
 'use server'
-import { cookies } from 'next/headers'
+/*import { cookies } from 'next/headers'
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -28,3 +28,4 @@ export const uploadImage = async (formData: FormData): Promise<string | null> =>
 
   return publicUrlData.publicUrl
 }
+  */
