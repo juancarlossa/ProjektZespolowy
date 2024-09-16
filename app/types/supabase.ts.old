@@ -9,40 +9,26 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      files: {
+      chat: {
         Row: {
-          extension: string
-          id: string
-          link: string
-          message_id: number
-          name: string
-          type: string
+          created_at: string
+          id: number
+          id_chat: string
+          messages: Json | null
         }
         Insert: {
-          extension: string
-          id?: string
-          link: string
-          message_id: number
-          name: string
-          type: string
+          created_at?: string
+          id?: number
+          id_chat: string
+          messages?: Json | null
         }
         Update: {
-          extension?: string
-          id?: string
-          link?: string
-          message_id?: number
-          name?: string
-          type?: string
+          created_at?: string
+          id?: number
+          id_chat?: string
+          messages?: Json | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "files_message_id_fkey"
-            columns: ["message_id"]
-            isOneToOne: false
-            referencedRelation: "messages"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       messages: {
         Row: {
@@ -52,28 +38,28 @@ export type Database = {
           id: number
           id_receiver: string
           id_user: string
-          message: string | null
+          message: string
           user_img: string
         }
         Insert: {
-          chat_id: string
-          created_at?: string
-          email: string
+          chat_id?: string | null
+          created_at?: string | null
+          email?: string | null
           id?: number
-          id_receiver: string
+          id_receiver?: string | null
           id_user: string
-          message?: string | null
-          user_img: string
+          message: string
+          user_img?: string | null
         }
         Update: {
-          chat_id?: string
-          created_at?: string
-          email?: string
+          chat_id?: string | null
+          created_at?: string | null
+          email?: string | null
           id?: number
-          id_receiver?: string
+          id_receiver?: string | null
           id_user?: string
-          message?: string | null
-          user_img?: string
+          message?: string
+          user_img?: string | null
         }
         Relationships: [
           {
@@ -88,10 +74,10 @@ export type Database = {
       users: {
         Row: {
           created_at: string
-          email: string | null
-          email_friends_list: Json | null
+          email: string
+          email_friends_list: string[] | null
           id: number
-          img: string | null
+          img: string
           name: string | null
           surname: string | null
           telefon: string | null
@@ -99,25 +85,25 @@ export type Database = {
         }
         Insert: {
           created_at?: string
-          email?: string | null
-          email_friends_list?: Json | null
+          email: string
+          email_friends_list?: string[] | null
           id?: number
           img?: string | null
-          name?: string | null
-          surname?: string | null
-          telefon?: string | null
           uuid: string
+          name: string | null
+          surname: string | null
+          telefon: string | null
         }
         Update: {
           created_at?: string
-          email?: string | null
-          email_friends_list?: Json | null
+          email?: string
+          email_friends_list?: string[] | null
           id?: number
           img?: string | null
-          name?: string | null
-          surname?: string | null
-          telefon?: string | null
           uuid?: string
+          name: string | null
+          surname: string | null
+          telefon: string | null
         }
         Relationships: [
           {

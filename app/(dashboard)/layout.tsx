@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import SidebarChatList from "../UI/components/SidebarChatList";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from 'next/headers'
 import { redirect } from "next/navigation";
 import { getFriendsByUserId } from "../_backend/helpers/get-friends-by-user-id";
 import { User } from "../types/user";
-import Nav from "../UI/components/Navbar";
-import { Button, Image } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import Link from "next/link";
+
+import AcceptFriendForm from "../UI/components/AcceptFriendFrom";
 
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export default async function RootLayout ({
   const responses: any = []
   async function fetchImages (friendList: User[]) {
     friendList.map(async (friend) => {
-      const response = await fetch(friend.img);
+      const response = await fetch(friend.img as string);
       responses.push(response.url);
     })
   }
@@ -68,6 +68,12 @@ export default async function RootLayout ({
           </Button>
         </div>
         <SidebarChatList sessionId={user.id} friends={friends} />
+        {/* <div className="border-b-1 border-cyan-200 flex flex-row justify-between">
+          <h2 className="text-slate-600 font-bold text-2xl mt-16">
+            Pending Friends
+          </h2>
+        </div>
+        <AcceptFriendForm /> */}
       </aside>
       <div className="w-4/5">
         {children}

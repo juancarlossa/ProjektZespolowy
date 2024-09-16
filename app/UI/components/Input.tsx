@@ -35,7 +35,7 @@ export default function InputText ({ email, username, telefon, uname, surname, p
         <div className="w-full flex flex-col gap-4">
           <div className="flex w-full flex-row md:flex-nowrap mb-6 md:mb-0 gap-4">
             <h1 className="text-lg font-medium text-gray-900">Email: </h1>
-            <Input defaultValue={email} name='email' variant="underlined" placeholder="Enter your email" />
+            <Input defaultValue={email !== "null" ? email : ""} name='email' variant="underlined" placeholder="Enter your email" />
             <Button
               type='submit'
               color='primary'
@@ -64,7 +64,7 @@ export default function InputText ({ email, username, telefon, uname, surname, p
         <div className="w-full flex flex-col gap-4">
           <div className="flex w-full flex-row md:flex-nowrap mb-6 md:mb-0 gap-4">
             <h1 className="mt-2 text-lg font-medium text-gray-900">Username: </h1>
-            <Input defaultValue={username} name='username' variant="underlined" placeholder="Enter your email" />
+            <Input defaultValue={username !== "null" ? username : ""} name='username' variant="underlined" placeholder="Enter your email" />
             <Button
               type='submit'
               color='primary'
@@ -93,7 +93,7 @@ export default function InputText ({ email, username, telefon, uname, surname, p
         <div className="w-full flex flex-col gap-4">
           <div className="flex w-full flex-row md:flex-nowrap mb-6 md:mb-0 gap-4">
             <h1 className="mt-2 text-lg font-medium text-gray-900">Telefon: </h1>
-            <Input defaultValue={telefon} name='telefon' variant="underlined" placeholder="Enter your telefon" />
+            <Input defaultValue={telefon !== "null" ? telefon : ""} name='telefon' variant="underlined" placeholder="Enter your telefon" />
             <Button
               type='submit'
               color='primary'
@@ -122,7 +122,7 @@ export default function InputText ({ email, username, telefon, uname, surname, p
         <div className="w-full flex flex-col gap-4">
           <div className="flex w-full flex-row md:flex-nowrap mb-6 md:mb-0 gap-4">
             <h1 className="mt-2 text-lg font-medium text-gray-900">Name: </h1>
-            <Input defaultValue={uname} name='name' variant="underlined" placeholder="Enter your name" />
+            <Input defaultValue={uname !== "null" ? uname : ""} name='name' variant="underlined" placeholder="Enter your name" />
             <Button
               type='submit'
               color='primary'
@@ -151,7 +151,7 @@ export default function InputText ({ email, username, telefon, uname, surname, p
         <div className="w-full flex flex-col gap-4">
           <div className="flex w-full flex-row md:flex-nowrap mb-6 md:mb-0 gap-4">
             <h1 className="mt-2 text-lg font-medium text-gray-900">Surname: </h1>
-            <Input defaultValue={surname} name='surname' variant="underlined" placeholder="Enter your surname" />
+            <Input defaultValue={surname !== "null" ? surname : ""} name='surname' variant="underlined" placeholder="Enter your surname" />
             <Button
               type='submit'
               color='primary'
@@ -180,7 +180,7 @@ export default function InputText ({ email, username, telefon, uname, surname, p
         <div className="w-full flex flex-col gap-4">
           <div className="flex w-full flex-row md:flex-nowrap mb-6 md:mb-0 gap-4">
             <h1 className="mt-2 text-lg font-medium text-gray-900">Picture: </h1>
-            <Input defaultValue={picture} name='picture' variant="underlined" placeholder="Enter your surname" />
+            <Input defaultValue={picture !== "null" ? picture : ""} name='picture' variant="underlined" placeholder="Enter your surname" />
             <Button
               type='submit'
               color='primary'

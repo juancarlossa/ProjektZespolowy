@@ -16,6 +16,9 @@ export const getFriendsByUserId = async (userId: string) => {
     .from('users')
     .select('*')
     .in('email', [friend])
+
+  // console.log(friendsList);
+
   if (friendsList === null) return
   if(friendsList === undefined) return  
 
@@ -27,14 +30,17 @@ export const getEmailFriendsListByUserId = async (userId: string) => {
   const { data: { user } } = await supabase.auth.getUser()
   if (user === null) return
 
-  const { data: friendsList } = await supabase
+  const { data: friendsList  } = await supabase
     .from('users')
     .select('email_friends_list')
     .eq('uuid', userId)
   if (friendsList === null) return
 
-  const emailFriendsList: string[] = [];
+  const emailFriendsList: [] = [];
+  // @ts-ignore
   friendsList?.map((friend) => ( friend.email_friends_list ? emailFriendsList.push(...friend.email_friends_list) : ''))
+
+  // console.log(emailFriendsList)
 
   return emailFriendsList
 }
