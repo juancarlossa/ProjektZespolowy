@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "devdev": "next dev",
     "dev": "code . && start http://localhost:3000 && next dev",
     "build": "next build",
     "start": "next start",

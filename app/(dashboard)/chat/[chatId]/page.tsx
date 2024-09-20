@@ -3,8 +3,7 @@ import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { User } from '@/app/types/user'
 import { Avatar } from '@nextui-org/react'
-import { addImageToTable } from '@/app/_backend/actions/add-img'
-import { Messages } from '@/app/UI/components/Messages'
+import { Messages } from '@/app/UI/components/Messages/Messages'
 import { Message } from '@/app/types/messages'
 import { ChatInput } from '@/app/UI/components/ChatInput'
 
@@ -24,7 +23,6 @@ const page = async ({ params }: PageProps) => {
   if (user.id !== userId1 && user.id !== userId2) {
     notFound()
   }
-  addImageToTable()
   const chatPartnerId = user.id === userId1 ? userId2 : userId1
 
   const { data: chatPartner }: { data: User | null } = await supabase
@@ -43,7 +41,10 @@ const page = async ({ params }: PageProps) => {
 
   const { data: messages }: { data: Message[] | null } = await supabase
     .from('messages')
-    .select('*')
+    .select(`
+      *,
+      files(*)
+    `)
     .eq('chat_id', chatId)
   if (messages === null) return
 

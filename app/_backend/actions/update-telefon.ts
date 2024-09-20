@@ -10,13 +10,13 @@ export async function updateTelefon (formData: FormData) {
   const supabase = createServerActionClient({ cookies })
   const { data: { user } } = await supabase.auth.getUser()
   if (user === null) return
-    await supabase
-      .from('users')
-      .update({ telefon: telefon })
-      .eq('uuid', user.id)
 
-  console.log(telefon)
-  }
+  await supabase
+    .from('users')
+    .update({ telefon: telefon })
+    .eq('uuid', user.id)
+
+}
 
 export async function getTelefon (): Promise<string> {
 
@@ -31,9 +31,9 @@ export async function getTelefon (): Promise<string> {
 
   if (nameData) {
     const telefon = nameData.telefon;
-    console.log(telefon);
     return String(telefon);
   }
 
   return '';
-  }
+
+}

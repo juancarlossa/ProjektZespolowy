@@ -5,6 +5,7 @@ import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { revalidatePath } from 'next/cache'
 
 export const addFriend = async (formData: FormData) => {
+
   const email = formData.get('email')
 
   if (email === null) return
@@ -14,7 +15,7 @@ export const addFriend = async (formData: FormData) => {
   const { data: { user } } = await supabase.auth.getUser()
   if (user === null) return
 
-  const { data: friends } = await supabase 
+  const { data: friends } = await supabase
     .from('users')
     .select('email_friends_list')
     .eq('uuid', user.id)
@@ -40,6 +41,8 @@ export const addFriend = async (formData: FormData) => {
   .from('users')
   .update({email_friends_list: getFriendsList()})
   .eq('uuid', user.id)
+
+
 
   revalidatePath(`/`)
   console.log('added friend: ' + getFriendsList())

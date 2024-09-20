@@ -4,13 +4,13 @@ import { type Session, createClientComponentClient } from '@supabase/auth-helper
 
   //OAuth Google i Github
   export const handleSignInGithub = async () => {
-    await supabase.auth.signInWithOAuth({
+    const { data } = await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: {
         redirectTo: 'http://localhost:3000/auth/callback'
       }
     })
-  }
+}
 
   export const handleSignInGoogle = async () => {
     await supabase.auth.signInWithOAuth({
@@ -19,6 +19,6 @@ import { type Session, createClientComponentClient } from '@supabase/auth-helper
         redirectTo: 'http://localhost:3000/auth/callback'
       }
     })
-  }
+}
 
   

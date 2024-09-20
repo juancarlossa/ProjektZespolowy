@@ -32,6 +32,8 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
   const [activeChats, setActiveChats] = useState(friends)
 
 
+  console.log(activeChats);
+
   useEffect(() => {
     pusherClient.subscribe(sessionId)
 
@@ -53,7 +55,7 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
           sessionId={sessionId}
           senderId={message.id_user}
           senderImg={message.senderImg}
-          senderMessage={message.message}
+          senderMessage={message.message || ""}
           senderName={message.email}
         />
       ))
@@ -101,19 +103,18 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
                 className='justify-between hover:text-gray-700 text-indigo-600 bg-gray-50 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'>
                 <form
                   action={async () => {
-                    await deleteFriend(friend.email)
+                    await deleteFriend(friend.email || "")
                   }}
-                  className=""
                 >
                   <DeleteButton />
                 </form>
-                {friend.email.split('@')[0]}
+                {friend.email?.split('@')[0]}
                 {unseenMessagesCount > 0 ? (
                   <div className='bg-indigo-600 font-medium text-xs text-white w-4 h-4 rounded-full flex justify-center items-center'>
                     {unseenMessagesCount}
                   </div>
                 ) : null}
-                <UserAvatar userImg={friend.img} />
+                <UserAvatar userImg={friend.img || ""} />
               </Link>
             </li>
           )
